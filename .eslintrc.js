@@ -32,7 +32,8 @@ module.exports = {
       1,
       {
       'extensions': [
-        '.tsx'
+        '.tsx',
+        '.ts'
       ]
       }
     ],

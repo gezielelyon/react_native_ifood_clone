@@ -8,11 +8,13 @@ const Stack = createStackNavigator();
 
 export default function Routes(){
   return (
-    <Stack.Navigator screenOptions={{
-      headerShown: false
-    }}>
-      <Stack.Screen name="Preload" component={Preload} />
-      <Stack.Screen name="TabRoutes" component={TabRoutes} />
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: true
+      }}
+    >
+      <Stack.Screen name="Preload" options={{headerShown: false}} component={Preload} />
+      <Stack.Screen name="TabRoutes" options={{title: 'Rua José Antônio Santos'}} component={TabRoutes} />
     </Stack.Navigator>
   )
 }

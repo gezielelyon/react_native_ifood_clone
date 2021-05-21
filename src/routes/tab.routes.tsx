@@ -1,35 +1,47 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {StatusBar} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {useNavigation} from '@react-navigation/native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import Home from '../screens/Home/index';
+import TopTabRoutes from './topTab.routes';
+import Search from '../screens/Search/index';
+import Orders from '../screens/Orders/index';
+import Profile from '../screens/Profile/index';
 
 const Tab = createBottomTabNavigator();
 
 const Icons = {
-  "Home": {
+  TopTabRoutes: {
     name: 'home',
     lib: AntDesign
   },
-  "Search": {
+  Search: {
     name: 'search',
     lib: Feather
   },
-  "Order": {
+  Order: {
     name: 'list-alt',
     lib: MaterialIcons
   },
-  "Profile": {
+  Profile: {
     name: 'user',
     lib: Feather
   },
 };
 
 export default function TabRoutes() {
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (<AntDesign name="qrcode" size={28} color="#ff0000" style={{marginRight: 15}} />)
+    })
+  }, []);
+
   return(
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
@@ -43,20 +55,38 @@ export default function TabRoutes() {
         })}
         tabBarOptions={{
           style:{
-            height: 60
+            height: 60,
           },
           labelStyle:{
             marginBottom: 5
           },
           iconStyle: {
             marginTop: 5
-          }
+          },
+          activeTintColor: '#ea1d2c',
+          inactiveTintColor: '#999'
         }}
       >
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Search" component={Home} />
-        <Tab.Screen name="Order" component={Home} />
-        <Tab.Screen name="Profile" component={Home} />
+        <Tab.Screen
+          name="TopTabRoutes"
+          options={{title: 'Início'}}
+          component={TopTabRoutes}
+        />
+        <Tab.Screen
+          name="Search"
+          options={{title: 'Busca'}}
+          component={Search}
+        />
+        <Tab.Screen
+          name="Order"
+          options={{title: 'Pedidos'}}
+          component={Orders}
+        />
+        <Tab.Screen
+          name="Profile"
+          options={{title: 'Perfil'}}
+          component={Profile}
+        />
       </Tab.Navigator>
     </>
   );

@@ -10,7 +10,7 @@
 ![Logo](https://user-images.githubusercontent.com/48457700/119190270-83219480-ba53-11eb-9eb2-fb5c8a4c3cc7.png)
 
 # React-Native Ifood Clone
-This is an application mobile created with React-Native that clone the Ifood App
+This is an app mobile created with React-Native that clone the Ifood App
 
 ## Technologies Used:
 - [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) (Language)
